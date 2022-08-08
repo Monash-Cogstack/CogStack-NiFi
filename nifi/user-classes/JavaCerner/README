@@ -1,0 +1,10 @@
+javac DecompressOcf/DecompressBlob.java
+rm -f DecompressOcfBlob.jar
+jar cfm DecompressOcfBlob.jar Manifest.txt DecompressOcf/DecompressBlob.class
+
+
+###############
+
+copy into docker
+
+docker cp DecompressOcfBlob.jar 3940024ee66f:/opt/nifi/user-classes/

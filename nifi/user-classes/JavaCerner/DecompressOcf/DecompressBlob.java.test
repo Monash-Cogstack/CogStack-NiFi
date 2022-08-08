@@ -1,0 +1,65 @@
+package DecompressOcf;
+
+// attempt to translate my c++ extractor to java
+// so that it is easier to use in nifi
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import java.nio.ByteBuffer;
+import java.io.*;
+import java.nio.file.*;
+
+
+public class DecompressBlob {
+    private int[] lzwLookupTableFirst, lzwLookupTableSecond;
+
+
+    private int MAX_CODES= 8192;
+    private int[] tempDecompressBuffer;
+    private int tempBufferIndex;
+    private int codeCount;
+    private byte[] finalByteBuffer;
+    private ArrayList<Byte> FBB;
+
+    public DecompressBlob() {
+	tempBufferIndex = 0;
+	codeCount = 257;
+	tempDecompressBuffer = new int[MAX_CODES];
+	lzwLookupTableFirst = new int[MAX_CODES];
+	lzwLookupTableSecond = new int[MAX_CODES];
+	FBB = new ArrayList<Byte>();
+    }
+	
+    
+    private class BitPlaceHolder {
+	public int index, LeftOverBits, LeftOverCode;
+	public BitPlaceHolder() {
+	    index = 0;
+	    LeftOverBits = 0;
+	    LeftOverCode = 0;
+	}
+    }
+    
+
+
+    public int Test() {
+	return(4);
+    }
+    
+    public int DoTest() {
+	// reference behaviour.
+	// BitPlaceHolder J = new BitPlaceHolder();
+	// int y = ReadNextCode(J);
+	// System.out.println(J.index);
+	return(0);
+    }
+
+    private int ReadNextCode(//BitPlaceHolder X,
+    			     byte[] rawbytes,
+     			     int codesize
+     			    ) {
+     	return(10);
+    }
+
+}

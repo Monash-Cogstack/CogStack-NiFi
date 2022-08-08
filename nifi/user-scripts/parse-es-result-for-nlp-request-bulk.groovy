@@ -27,6 +27,7 @@ import groovy.json.JsonSlurper
 import org.apache.commons.io.IOUtils
 import org.apache.nifi.processor.io.StreamCallback
 import java.nio.charset.StandardCharsets
+import java.time.Instant
 
 
 // NiFi flow: get the input flow file
@@ -49,7 +50,7 @@ flowFile = session.write(flowFile, { inputStream, outputStream ->
     def outContent = []
 	inJson.hits.each { rec ->
 		footer = [:]
-
+        Instant instant = Instant.now()
         // store each available field into footer (excluding the document content
         //.  'document_text_field' is provided by the user
 		rec.each {k, v ->
@@ -58,6 +59,7 @@ flowFile = session.write(flowFile, { inputStream, outputStream ->
     	}
     	outRec = [:]
     	outRec.text = rec[document_text_field as String]
+        footer.put("timestamp", instant.toString())
     	outRec.footer = footer
 	
 		outContent.add(outRec)

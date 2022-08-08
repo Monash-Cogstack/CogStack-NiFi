@@ -1,0 +1,7 @@
+Name: DecompressOcf/
+Specification-Title: Decompress Ocf Blob
+Specification-Version: 0.1
+Specification-Vendor: NCHA
+Implementation-Title: DecompressOcf
+Implementation-Version: 0.1
+Implementation-Vendor: NCHA

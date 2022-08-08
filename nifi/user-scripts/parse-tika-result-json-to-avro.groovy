@@ -59,7 +59,7 @@ def parseJsonToAvro(inJson, avroSchema) {
     def docIdValue = null
 
     try {
-        docIdValue = Integer.parseInt(inJson['doc_id'])
+        docIdValue = Integer.parseInt(String.valueOf(inJson['doc_id']))
     }
     catch (Exception e) {
         try {
@@ -82,16 +82,15 @@ def parseJsonToAvro(inJson, avroSchema) {
     //
     assert inJson.containsKey('metadata')
     if (inJson.metadata.containsKey('X-OCR-Applied'))
-        docRecord.put("metadata_x_ocr_applied", inJson.metadata['X-OCR-Applied'])
+        docRecord.put("metadata_x_ocr_applied", Boolean.parseBoolean(String.valueOf(inJson.metadata['X-OCR-Applied'])))
 
     if (inJson.metadata.containsKey('X-TIKA:Parsed-By'))
-        docRecord.put("metadata_x_parsed_by", new org.apache.avro.util.Utf8(String.join(";", inJson.metadata['X-TIKA:Parsed-By'])))
-
+        docRecord.put("metadata_x_parsed_by", new org.apache.avro.util.Utf8(String.join(";", inJson.metadata['X-Parsed-By'])))
 
     // optional metadata fields
     //
     if (inJson.metadata.containsKey('Page-Count'))
-        docRecord.put("metadata_page_count", inJson.metadata['Page-Count'])
+        docRecord.put("metadata_page_count", Integer.parseInt(String.valueOf(inJson.metadata['Page-Count'])))
 
     if (inJson.metadata.containsKey('Content-Type'))
         docRecord.put("metadata_content_type", new org.apache.avro.util.Utf8(inJson.metadata['Content-Type']))

@@ -87,11 +87,10 @@ To run a workflow in Apache Nifi, follow the following steps:
 OR  
 Select a pre-existing template from the available list. 
 2. If any of the processors display the yellow alert symbol, hover over it to see the issue.  
-
-**Common Issues: **
-* A service being disabled: Open the Processor properties and select the Go To arrow to move to the screen where the service can be enabled. 
-* Password missing [Eg. for access to DB]: Open the Processor properties and provide the password. 
-* Required files missing/Incorrect file paths: If the processor utilises any files located in the nifi container, ensure the file exists and the path to the file is correct. 
+**Common Issues:**  
+    *  A service being disabled: Open the Processor properties and select the Go To arrow to move to the screen where the service can be enabled.  
+    * Password missing [Eg. for access to DB]: Open the Processor properties and provide the password.  
+    * Required files missing/Incorrect file paths: If the processor utilises any files located in the nifi container, ensure the file exists and the path to the file is correct. 
 3. Once the processor is configured correctly, it should have a Stop symbol in place of the alert symbol. Right click and select Start to start the processor. 
 
 ## CogStack Pipeline
